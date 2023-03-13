@@ -18,7 +18,7 @@ read varEmail
 echo Email address: $varEmail
 sleep 3
 echo Installing the SSL..
-certbot run --nginx -m $varEmail --agree-tos -d $varDomain --key-type ecdsa --elliptic-curve secp384r1
+certbot certonly --nginx -m $varEmail --agree-tos -d $varDomain --key-type ecdsa --elliptic-curve secp384r1
 echo Configuring nginx...
 mv /etc/nginx/eportal.ssl.conf.example /etc/nginx/eportal.ssl.conf
 grep -c "include eportal.ssl.conf;" /etc/nginx/conf.d/eportal.conf || sed -i "3i \ include eportal.ssl.conf;" /etc/nginx/conf.d/eportal.conf
